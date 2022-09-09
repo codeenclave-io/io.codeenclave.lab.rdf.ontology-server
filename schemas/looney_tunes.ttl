@@ -1,0 +1,105 @@
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix : <http://looneytunes-graph.com/>
+
+:LooneyTunesCharacter a rdfs:Class;
+	rdfs:label "LooneyTunesCharacter".
+
+# Bugs Bunny
+:Bugs_Bunny
+	rdf:type :LooneyTunesCharacter;
+	:name "Bugs Bunny";
+	:species "Hare";
+	:gender "Male";
+	:made_debut_appearance_in :A_Wild_Hare;
+	:created_by :Tex_Avery;
+	:personality_trait "Cunning", "Charismatic", "Smart";
+	:known_for_catchphrase "What's up, doc?".
+
+# A Wild Hare
+:A_Wild_Hare
+	rdf:type :Short;
+	:name "A Wild Hare";
+	:release_date "1940-07-27"^^xsd:date.
+
+# Tex Avery
+:Tex_Avery
+	rdf:type :Person;
+	:name "Fredrick Bean Avery";
+	:born_on "1908-02-26"^^xsd:date;
+	:died_on "1980-08-26"^^xsd:date.
+
+# Daffy Duck
+:Daffy_Duck
+	rdf:type :LooneyTunesCharacter;
+	:name "Daffy Damas Duck";
+	:species "Duck";
+	:gender "Male";
+	:made_debut_appearance_in :Porkys_Duck_Hunt;
+	:created_by :Tex_Avery;
+	:personality_trait "Assertive", "Unrestrained", "Combative";
+	:known_for_catchphrase "You're despicable".
+
+# Porkys Duck Hunt
+:Porkys_Duck_Hunt
+	rdf:type :Short;
+	:name "Porky's Duck Hunt";
+	:release_date "1937-04-17"^^xsd:date.
+
+# Taz
+:Taz
+	rdf:type :LooneyTunesCharacter;
+	:name "Tasmanian Devil";
+	:species "Tasmania Devil";
+	:gender "Male";
+	:made_debut_appearance_in :Devil_May_Hare;
+	:created_by :Sid_Marcus, :Robert_McKimson;
+	:personality_trait "Dim-Witted", "Short-Tempered", "Impatient".
+
+# Devil May Hare
+:Devil_May_Hare
+	rdf:type :Short;
+	:name "Devil May Hare";
+	:release_date "1954-06-19"^^xsd:date.
+
+# Robert McKimson
+:Robert_McKimson
+	rdf:type :Person;
+	:name "Robert Porter McKimson, Sr";
+	:born_on "1910-10-13"^^xsd:date;
+	:died_on "1977-09-29"^^xsd:date.
+
+# Sid Marcus
+:Sid_Marcus
+	rdf:type :Person;
+	:name "Sidney Marcus";
+	:born_on "1897-10-14"^^xsd:date;
+	:died_on "1979-01-31"^^xsd:date.
+
+
+# Sylvester
+:Sylvester
+	rdf:type :LooneyTunesCharacter;
+	:name "Sylvester James Pussycat Sr.";
+	:species "Tuxedo Cat";
+	:gender "Male";
+	:made_debut_appearance_in :Life_With_Feathers;
+	:created_by :Friz_Freleng;
+	:personality_trait "Proud", "Persistent", "Loser";
+	:known_for_catchphrase "Syfferin' succotash".
+
+# Life With Feathers
+:Life_With_Feathers
+	rdf:type :Short;
+	:name "Life Whith Feathers";
+	:release_date "1945-03-24"^^xsd:date.
+
+# Friz Freleng
+:Friz_Freleng
+	rdf:type :Person;
+	:name "Isadore Freleng";
+	:born_on "1905-08-21"^^xsd:date;
+	:died_on "1995-05-26"^^xsd:date.
+
+# What is Bugs Bunny's name

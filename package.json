@@ -1,0 +1,35 @@
+{
+  "name": "rdf-server",
+  "version": "1.0.0",
+  "description": "Server up rdf schemas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "serve": "node ./dist/index.js",
+    "monitor": "nodemon --config nodemon.json dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "http-proxy-middleware": "^2.0.6",
+    "morgan": "^1.10.0",
+    "n3": "^1.16.2",
+    "rdf-parse": "^2.1.0",
+    "rdfa-streaming-parser": "^1.5.0"
+  },
+  "devDependencies": {
+    "@rdfjs/types": "^1.1.0",
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/http-proxy-middleware": "^1.0.0",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^18.6.4",
+    "@types/typescript": "^2.0.0"
+  }
+}

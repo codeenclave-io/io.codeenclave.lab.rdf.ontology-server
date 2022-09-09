@@ -1,0 +1,65 @@
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix : <http://cs.schema.client/>
+prefix client: <http://cs.client/>
+
+:counterpartyId a rdfs:Property;
+    rdfs:label "counterpartyId";
+    rdfs:type xsd:string;
+    rdfs:format xsd:uuid.
+
+:firstName a rdfs:Property;
+    rdfs:label "firstName";
+    rdfs:type xsd:string;
+    rdfs:format xsd:string.
+
+:lastName a rdfs:Property;
+    rdfs:label "lastName";
+    rdfs:type xsd:string;
+    rdfs:format xsd:string.
+
+:dateOfBirth a rdfs:Property;
+    rdfs:label "dateOfBirth";
+    rdfs:type xsd:date;
+    rdfs:format xsd:date.
+
+:email a rdfs:Property;
+    rdfs:label "email";
+    rdfs:type xsd:string;
+    rdfs:format xsd:email.
+
+:phone a rdfs:Property;
+    rdfs:label "phone";
+    rdfs:type xsd:string;
+    rdfs:format xsd:string.
+
+
+:Counterparty a rdfs:Class;
+    rdfs:description "counterparty details";
+    rdfs:label "Counterparty";
+    rdfs:Property :counterpartyId;
+    rdfs:Property :firstName;
+    rdfs:Property :lastName;
+    rdfs:Property :dateOfBirth;
+    rdfs:Property :email;
+    rdfs:Property :phone.
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix : <http://cs.schema.client/>
+prefix client: <http://cs.client/>
+client:b9f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8f8 a :Counterparty;
+    :counterpartyId "b9f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8f8";
+    :firstName "Jason";
+    :lastName "Brown";
+    :dateOfBirth "1954-01-01";
+    :email "jason@brown.com";
+    :phone "555-555-5555".
+
+client:b9f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8ff a :Counterparty;
+    :counterpartyId "b9f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8ff";
+    :firstName "Fred";
+    :lastName "Flintstone";
+    :dateOfBirth "1934-01-01";
+    :email "fred@gmail.com";
+    :phone "555-555-5555".

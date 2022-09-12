@@ -8,11 +8,12 @@
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "node ./dist/index.js",
-    "monitor": "nodemon --config nodemon.json dist/index.js"
+    "monitor": "nodemon --config nodemon.json dist/index.js --watch schemas/*"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@frogcat/ttl2jsonld": "^0.0.8",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",

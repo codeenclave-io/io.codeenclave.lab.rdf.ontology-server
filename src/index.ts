@@ -24,6 +24,17 @@ function getAllFiles(dirPath: string){
 });  
 }
 
+
+
+app.use(Express.json());
+app.use(cors({
+    origin: 'http://localhost:3000',
+}));
+
+// logging
+app.use(morgan('combined'));
+
+
 function addallFilePaths(dirPath: string){
     fs.readdirSync(dirPath).forEach(function(file) {
     let filepath = path.join(dirPath , file);
@@ -36,7 +47,7 @@ function addallFilePaths(dirPath: string){
         app.get('/' + fileComponents[0], (req, res) => {
             const turtle = fs.readFileSync(filepath, 'utf-8');
             const jsonld = ttl2jsonld(turtle);
-            //console.log(jsonld);
+            console.log(jsonld);
             //console.log(JSON.stringify(jsonld,null,2));
             res.setHeader('Content-Type', 'application/json')
             res.send(JSON.stringify(jsonld,null,2));
@@ -48,17 +59,9 @@ function addallFilePaths(dirPath: string){
 process.chdir('schemas')
 addallFilePaths('.');
 
-app.use(Express.json());
-app.use(cors({
-    origin: 'http://localhost:3000',
-}));
-
-// logging
-app.use(morgan('combined'));
-
-
-
-
+app.get('/refresh', (req, res) => {
+    addallFilePaths('.');
+});
 
 app.get('/', (req, res) => {
     const parser = new n3.Parser();
@@ -100,15 +103,5 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 });
 
-app.get('/jsonld', (req, res) => {
-    const baseDir = 'schemas';
-    getAllFiles(baseDir);
-
-    const turtle = fs.readFileSync('schemas/portfolio.ttl', 'utf-8');
-    const jsonld = ttl2jsonld(turtle);
-    console.log(jsonld);
-    console.log(JSON.stringify(jsonld,null,2));
-    res.send(JSON.stringify(jsonld,null,2));
-});
 // start server
 app.listen(9000, () => console.info('api listening at http://localhost:9000'));

@@ -1,44 +1,15 @@
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
-prefix client: <http://localhost:9000/cs/client/counterparty/>
-
-client:counterpartyId a rdfs:Property;
-    rdfs:label "counterpartyId";
-    rdfs:type xsd:string;
-    rdfs:format xsd:uuid.
-
-client:firstName a rdfs:Property;
-    rdfs:label "firstName";
-    rdfs:type xsd:string;
-    rdfs:format xsd:string.
-
-client:lastName a rdfs:Property;
-    rdfs:label "lastName";
-    rdfs:type xsd:string;
-    rdfs:format xsd:string.
-
-client:dateOfBirth a rdfs:Property;
-    rdfs:label "dateOfBirth";
-    rdfs:type xsd:date;
-    rdfs:format xsd:date.
-
-client:email a rdfs:Property;
-    rdfs:label "email";
-    rdfs:type xsd:string;
-    rdfs:format xsd:email.
-
-client:phone a rdfs:Property;
-    rdfs:label "phone";
-    rdfs:type xsd:string;
-    rdfs:format xsd:string.
+prefix counterparty: <http://localhost:9000/cs/client/counterparty/>
+prefix client: <http://localhost:9000/cs/client>
 
 client:Counterparty a rdfs:Class;
     rdfs:description "counterparty details";
     rdfs:label "Counterparty";
-    rdfs:Property client:counterpartyId;
-    rdfs:Property client:firstName;
-    rdfs:Property client:lastName;
-    rdfs:Property client:dateOfBirth;
-    rdfs:Property client:email;
-    rdfs:Property client:phone.
+    rdfs:Property counterparty:counterpartyId;
+    rdfs:Property counterparty:firstName;
+    rdfs:Property counterparty:lastName;
+    rdfs:Property counterparty:dateOfBirth;
+    rdfs:Property counterparty:email;
+    rdfs:Property counterparty:phone.

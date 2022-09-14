@@ -8,7 +8,7 @@
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "node ./dist/index.js",
-    "monitor": "nodemon --config nodemon.json dist/index.js --watch schemas/*"
+    "monitor": "nodemon --config nodemon.json --watch schemas dist/index.js"
   },
   "author": "",
   "license": "ISC",

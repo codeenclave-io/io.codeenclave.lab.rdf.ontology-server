@@ -1,0 +1,18 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+  - url: http://localhost:9000/
+
+paths:
+  /test:
+    get:
+      responses:
+        "200":
+          description: "successful operation"
+          content:
+            application/ld+json:
+              schema:
+                $ref: "http://localhost:9000/cs/client/counterparty"

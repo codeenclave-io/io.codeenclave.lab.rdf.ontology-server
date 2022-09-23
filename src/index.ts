@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import * as stream from 'stream';
 import * as n3 from 'n3';
 import path from 'path';
+import * as RdfString from "rdf-string";
 
 const ttl2jsonld = require('@frogcat/ttl2jsonld').parse;
 
@@ -23,8 +24,6 @@ function getAllFiles(dirPath: string){
     }    
 });  
 }
-
-
 
 app.use(Express.json());
 app.use(cors({
@@ -56,12 +55,55 @@ function addallFilePaths(dirPath: string){
 });  
 }
 
+function traverseDirectory(dirPath: string, callback: (filePath: string) => void) {
+    fs.readdirSync(dirPath).forEach(function(file) {
+    let filepath = path.join(dirPath , file);
+    let stat= fs.statSync(filepath);
+    if (stat.isDirectory()) {            
+        traverseDirectory(filepath, callback);
+    } else {
+        callback(filepath);
+    }    
+});  
+}
+
+function addGetPathForFile(filepath: string) {
+    const fileComponents: string[] = filepath.split('.');
+    console.info('Get URI: ' + fileComponents[0] + '\n');
+    app.get('/' + fileComponents[0], (req, res) => {
+        const turtle = fs.readFileSync(filepath, 'utf-8');
+        const jsonld = ttl2jsonld(turtle);
+        console.log(jsonld);
+        //console.log(JSON.stringify(jsonld,null,2));
+        res.setHeader('Content-Type', 'application/json')
+        res.send(JSON.stringify(jsonld,null,2));
+    }); 
+}
+
+// set the base path for the schema repository
 process.chdir('schemas')
-addallFilePaths('.');
+// get all files in the schema repository and add get paths for each file
+traverseDirectory('.', addGetPathForFile);
+//addallFilePaths('.');
 
 app.get('/refresh', (req, res) => {
     addallFilePaths('.');
 });
+
+
+const parser = new n3.Parser();
+
+function turtleToJsonProcessor(filepath: string) {
+    const turtle = fs.readFileSync(filepath, 'utf-8');
+    const quads: n3.Quad[] =parser.parse(turtle);
+
+    quads.forEach((quad) => {
+        //console.log(RdfString.quadToStringQuad(quad));
+        console.log(RdfString.termToString(quad.subject));
+    });
+}
+
+traverseDirectory('.', turtleToJsonProcessor);
 
 app.get('/', (req, res) => {
     const parser = new n3.Parser();

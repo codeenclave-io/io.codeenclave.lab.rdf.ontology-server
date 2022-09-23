@@ -13,6 +13,6 @@ paths:
         "200":
           description: "successful operation"
           content:
-            application/ld+json:
+            application/json:
               schema:
-                $ref: "http://localhost:9000/cs/client/counterparty"
+                $ref: "cs/client/counterparty.json"

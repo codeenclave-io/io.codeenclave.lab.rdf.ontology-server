@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "schema": {
+            "type": "string",
+            "example": "http://localhost:9000/cs/client/counterparty"
+        },
+        "counterparty:counterpartyId": {
+            "type": "string"
+        }
+    }
+}

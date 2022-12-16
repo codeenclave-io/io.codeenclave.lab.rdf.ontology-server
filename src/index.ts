@@ -80,6 +80,11 @@ function addGetPathForFile(filepath: string) {
     }); 
 }
 
+// grab the command line arguments and process them
+process.argv.forEach((val, index) => {
+    console.log(`${index}: ${val}`);
+  });
+
 // set the base path for the schema repository
 process.chdir('schemas')
 // get all files in the schema repository and add get paths for each file
